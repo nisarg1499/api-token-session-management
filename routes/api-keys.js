@@ -74,6 +74,7 @@ const e = require("express");
 
         function getAllKeys(req, res){
             
+            console.log("Get all keys API called");
             console.log(map);
             res.status(200).json({status : true, message: "Data printed on console"});
             return;
@@ -82,6 +83,7 @@ const e = require("express");
 
         function getAllAvailableKeys(req, res){
 
+            console.log("Get all available keys API called");
             if(available){
                 console.log(available);
                 res.status(200).json({status: true, message : "Data prined on console"});
@@ -95,7 +97,7 @@ const e = require("express");
         }
 
         function createKey(req, res){
-            console.log("In create key api");
+            console.log("Create Key API called");
 
             let apikey = crypto.randomBytes(5).toString('hex');
             let apiKeyObject = {
@@ -119,7 +121,7 @@ const e = require("express");
         }
 
         function unBlockKey(req, res){
-            console.log("In unblock key api");
+            console.log("Unblock API called");
 
             keyToUpdate = parseInt(req.params.id);
 
@@ -138,7 +140,7 @@ const e = require("express");
                 map.set(keyToUpdate, obj);
                 available.set(keyToUpdate, obj);
                 block.delete(keyToUpdate);
-                console.log("Key unblocked");
+                console.log("Key : " + tempKey + " unblocked");
             }
             else{
                 console.log("Key is already in unblock stage");
@@ -156,7 +158,7 @@ const e = require("express");
         }
 
         function getKey(req, res){
-            console.log("In get key");
+            console.log("Get key API called");
 
             let k1 = [...map.keys()];
             let k2 = [...block.keys()];
@@ -200,6 +202,7 @@ const e = require("express");
                 console.log(alive);
                 available.delete(rn);
 
+                console.log("Key : " + tempKey + " assigned to the client");
                 res.status(200).json({
                     status: true,
                     apiKey : tempKey
@@ -221,7 +224,7 @@ const e = require("express");
                         blockedAt : Date.now()
                     }
                     block.set(getClientKeyId, newBlockedObj);
-                    console.log("Key further blocked");
+                    console.log("Key : " + tempKey + " further blocked");
                     res.status(200).json({status: true, message: "Key further blocked"});
                     return;
                 }
