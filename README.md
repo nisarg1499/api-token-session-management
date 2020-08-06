@@ -1,8 +1,8 @@
-# api-token-session-management
+# API Token Session management project
 
 Run `npm run dev` command to start the server. This server contains the approach of solution using Map data structure which is written in api-server.js and ./routes.api-keys.js file. 
 
-I have also implementd some API's using database by writing mongo queries which is in server.js and ./routes/keys.js file.
+There is implemention of few API's using database by writing mongo queries which is in server.js and ./routes/keys.js file.
 
 
 ### Approach
@@ -129,8 +129,6 @@ Now there are **3 cases** :
 
 These are some of the crucial test cases. I have also test other APIs such as delete, get all, etc.
 
-### Ideas for Donut
-Idea Document : Find [here](https://docs.google.com/document/d/1uAAuXP5EUHcLU2hNb-kxcNNhimWsANuGXmu5GjlidFI/edit?usp=sharing)
 
 
 
